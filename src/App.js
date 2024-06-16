@@ -5,6 +5,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import PrivateRoute from './components/PrivateRoute';
+import Shopee from './components/Shopee';
+import Products from './pages/Products';
+import Landin from './pages/Landin';
 
 function App() {
   return (
@@ -12,18 +15,20 @@ function App() {
     <Routes>
     
       
-     
+     <Route path='/landing' element={<Landin/>}/>
 <Route path='/login' element={<Login/>} name='login'/>
       <Route path="/Register" element={<Register/>}/>
       <Route
       
- path='/'
+ exact path="/"
   element={
     <PrivateRoute>
       <Home/>
     </PrivateRoute>
   }
 />
+<Route path='/shop' element={<PrivateRoute><Shopee/></PrivateRoute>}/>
+<Route path='/products' element={<PrivateRoute><Products/></PrivateRoute>}/>
     </Routes>
     </BrowserRouter>
   );

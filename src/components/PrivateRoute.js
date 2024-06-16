@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Children } from 'react'
 import { Route,Navigate, Outlet } from 'react-router-dom'
+import Home from '../pages/Home';
 const PrivateRoute = ({ children }) => {
     
     function hasJWT() {
@@ -10,7 +11,7 @@ const PrivateRoute = ({ children }) => {
         return flag
     }
 
-   return hasJWT ? <Outlet/> :<Navigate to="/login"/>
+   return hasJWT() ? children :<Navigate to="/login"/>
 }
 
 export default PrivateRoute

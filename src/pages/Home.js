@@ -4,8 +4,10 @@ import { useState,useEffect } from 'react';
 import {jwtDecode }from 'jwt-decode';
 import Noteapp from '../components/Noteapp';
 import Chatapp from '../components/Chatapp';
-const Home = () => {
+import { useNavigate } from 'react-router-dom';
 
+const Home = () => {
+    const navigate=useNavigate();
     const [user, setUser] = useState(null);
   
     useEffect(() => {
@@ -33,7 +35,10 @@ const Home = () => {
             ) : (
                 <h1>Loading...</h1>
             )}
-           
+           <button onClick={()=>{navigate('/shop')}}>shop</button>
+           <button onClick={()=>{localStorage.removeItem('token');
+            navigate('/login')
+           }}>Logout</button>
         </div>
   )
 }
