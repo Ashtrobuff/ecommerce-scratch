@@ -5,6 +5,12 @@ body{
   overflow-x: hidden;
   overflow-y: scroll;
 }
+#root{
+  position: absolute;
+  width: 100vw;
+
+  
+}
 .navbar{
   display: flex;
   align-items: center;
@@ -101,10 +107,13 @@ color: grey;
   gap:10px;
  max-height: 600px;
  overflow-x: scroll;
- height: 500px;
+ height: 350px;
 width: 100vw;
-
+scroll-behavior: smooth;}
+.product-carousel::-webkit-scrollbar{
+  display: none;
 }
+
 .product{
   margin-top: 30px;
   height: fit-content;
@@ -142,14 +151,18 @@ width: 100vw;
 padding:10px;
 }
 .loginbody{
-  background: radial-gradient(#fff,#ffd6d6);
-  width:100%;
+  position:absolute;
+  background: radial-gradient(#fff,#DB4444);
+  width:100vw;
   height: 100vh;
   display:flex;
   justify-content: center;
   align-items: center;
 }
 .form-container{
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
  position: relative;
   background:#fff;
   width:300px;
@@ -159,26 +172,42 @@ padding:10px;
   margin: auto;
   box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
   transform: translate 0.5s;
+  overflow: hidden;
+}
+.form-cont{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: row;
+  gap:90px;
+  overflow: hidden;
+}
+.form-cont form{
+  max-width: 300px;
+  padding:0 20px;
+  top:130px;
+  position: absolute;
+  transition: transform 1s;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 10px;
 }
 .form-container span{
   font-weight: bold;
   padding:0 10px;
-  color: #555;
+  color: #000;
   cursor: pointer;
   width: 100px;
   display:inline-block
 }
 .form-btn{
   display: inline-block;
-
+  color:#000;
 }
 .form-container form{
-  max-width: 200px;
-  padding:0 20px;
-  top:130px;
-  position: absolute;
-  transition: transform 1s;
-  margin-left: 30px;
+  border-radius: 10px;
 }
 form input{
   width:100%;
@@ -190,11 +219,22 @@ form input{
   width: 100%;
   border:none;
   cursor: pointer;
-  background-color: #c72e2e;
+  background-color:#db4444;
   height: 30px;
   padding: 0 10px;
   color: #fff;
+  border-radius: 5px;
   transition: 0.2s;
+}
+.btngoogle{
+  margin-top: 15px;
+  width: 100%;
+  border:solid #dad7d7;
+  cursor: pointer;
+  background-color: #fff;
+  height: fit-content;
+  padding: 0 10px;
+  border-radius: 5px;
 }
 .btn:hover{
   scale: 1.1;
@@ -202,31 +242,34 @@ form input{
   color:#000;
 }
 #login-form{
- margin-left: -200px;
+  max-width: 250px;
+ position: absolute;
+ left: -500px;
 }
 #reg-form{
-  right: 0;
+position: absolute;
+right: 0;
 }
 
-#login-form:state(wannalog="true"){
-  transform: translateX(210px);
-}
-
-#reg-form[wannalog="true"]{
-transform: translateX(210px);
-}
-
-#login-form[wannalog="false"]{
-  transform: translateX(0px)
-}
-#reg-form[wannalog="false"]{
-  transform: translateX(0px);
-}
 .girder{
   overflow: hidden;
   grid-template-columns: 40px 40px 40px;
   grid-template-columns: 40px 40px 40px;
   grid-gap: 10px;
+}
+#side-section div{
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  transition-duration: 0.1s;
+  height:30px ;
+}
+#side-section div:hover{
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+ scale:1.2
 }
 .bahar:hover > .carter{
   display:flex;
@@ -275,4 +318,64 @@ color:transparent;
 #footersocial div{
   display: inline-block;
   margin-left: 20px;
+}
+.categorybox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 200px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 1px solid #cececcd7 ;
+  cursor: pointer;
+transition-duration: 0.1s;
+
+}
+.categorybox:hover{
+  scale:1.1;
+  background-color:#DB4444;
+  color: #fff;
+}
+#login-form input{ 
+  transition-duration:0.01s ;
+  background-color: #efeeee;
+  border:none;
+}
+#login-form input:focus{
+  outline: none;
+  border-bottom: solid #DB4444;
+  border-width: 2px;
+}
+#login-form input::selection{
+border-bottom: solid #db4444;
+}
+
+#reg-form input{ 
+  transition-duration:0.01s ;
+  background-color: #efeeee;
+  border:none;
+}
+#lowbord{
+width:0px;
+transition-duration: 0.5s;
+height: 2px;
+}
+#reg-form input:focus #lowbord{
+width:300px;
+outline: none;
+}
+#reg-form input::selection{
+border-bottom: solid #db4444;
+}
+
+.categoryshow{ 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2px;
+  grid-auto-rows: minmax(100px, auto);
+}
+.grid-item{
+  grid-row: span 1;
+  grid-column: span 1;
 }

@@ -50,7 +50,7 @@ async function getproduct(){
 
 
   return (
-    <div className='girder'>Shopee
+    <div className='w-full h-full absolute'>Shopee
         {isAdmin?(<button onClick={()=>{navigate("/products")}}>Admin button</button>):(null)}
 
         

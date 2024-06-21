@@ -3,11 +3,22 @@ import { Scale } from 'lucide-react'
 import React from 'react'
 import { CiHeart } from 'react-icons/ci'
 import { FaEye } from 'react-icons/fa'
-
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../features/Cart/CartSlice'
 const Product = ({data}) => {
+  const dispatch=useDispatch()
+  const navigate=useNavigate();
+  const id=data.id
+  const exploreProduct=()=>{
+    navigate(`/productpage/${id}`)
+  }
+  const handleAddToCart = () => {
+    dispatch(addToCart({ id: data.id, title: data.title, price: data.price }));
+  };
   return (
 
-        <div className='bahar mx-2'>
+        <div className='bahar mx-2' onClick={exploreProduct}>
          
             <div className=" product">
             <div className='overlay'>
@@ -23,11 +34,11 @@ const Product = ({data}) => {
     <div className='flex items-center justify-center'> <img src={data.images[0]} style={{height:"120px",width:"max-content",objectFit:"cover"}}/></div>
      </div>
      </div>
-   <div>{data.title}</div>
-   <div>{data.price}</div>
-   <Rating></Rating>
+   <p className='text-center flex  items-center justify-center'>{data.title}</p>
+   <div className='font-bold'>${data.price}</div>
+   <Rating defaultValue={0} value={data.rating}></Rating>
    
-   <div className=' iconer carter' style={{background:"#Db4444"}}>Add to cart</div>
+   <div className=' iconer carter w-full' style={{background:"#Db4444"}} onClick={handleAddToCart}>Add to cart</div>
 </div>
     
 

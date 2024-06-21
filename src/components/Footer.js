@@ -12,7 +12,7 @@ const Footer = () => {
        <h3>Subscribe</h3>
        <h4 className='font-normal'>Get 10% off on your first order</h4>
        <div className='flex flex-row gap-5 items-center'><input  style={{height:"30px",
-border:"1px solid #ccc", background:"#000",padding:"4px", borderRadius:"5px"}}type="email" placeholder='enter your email...'></input>
+border:"1px solid #ccc", background:"#000",padding:"4px", borderRadius:"5px",color:"#fff"}}type="email"  color="white" placeholder='enter your email...'></input>
 <CiPaperplane style={{scale:"2",stroke:"white"}} color='white'/></div>
        
     </div>

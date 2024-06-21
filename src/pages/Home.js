@@ -25,7 +25,7 @@ const Home = () => {
         }
     }, []);
   return (
-    <div>
+    <div className='h-100 w-100 absolute'>
             {user ? (
                 <>
                 <h1>Welcome, {user.email}!</h1>
