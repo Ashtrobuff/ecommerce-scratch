@@ -12,6 +12,7 @@ import ProductPage from './pages/ProductPage';
 import CategoryPage from './pages/CategoryPage';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
+import AllProductPage from './pages/AllProductPage';
 function App() {
   return (
     
@@ -31,7 +32,7 @@ function App() {
     </PrivateRoute>
   }
 />
-
+<Route path='/allproducts' element={<AllProductPage/>}/>
 <Route path="/productpage/:id" element={<ProductPage/>}/>
 <Route path='/shop' element={<PrivateRoute><Shopee/></PrivateRoute>}/>
 <Route path='/products' element={<PrivateRoute><Products/></PrivateRoute>}/>

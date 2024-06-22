@@ -11,7 +11,7 @@ export const CartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       // Check if item already exists in cart
-       const { id, title, price } = action.payload;
+       const { id, title, price,image,quantity } = action.payload;
       const existingItem = state.items.find(item => item.id === id);
 
       if (existingItem) {
@@ -19,7 +19,7 @@ export const CartSlice = createSlice({
         existingItem.quantity += 1;
       } else {
         // If item does not exist, add it to cart
-        state.items.push({ id, title, price, quantity: 1 });
+        state.items.push({ id, title, price, quantity,image });
       }
       // Recalculate total price
       state.total += action.payload.price;
@@ -38,7 +38,7 @@ export const CartSlice = createSlice({
       const { id, quantity } = action.payload;
       // Find item by id
       const itemToUpdate = state.items.find(item => item.id === id);
-      if (itemToUpdate) {
+      if (itemToUpdate && quantity>0) {
         // Update item quantity
         state.total += (quantity - itemToUpdate.quantity) * itemToUpdate.price;
         itemToUpdate.quantity = quantity;

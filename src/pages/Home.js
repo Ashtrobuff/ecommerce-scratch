@@ -5,9 +5,10 @@ import {jwtDecode }from 'jwt-decode';
 import Noteapp from '../components/Noteapp';
 import Chatapp from '../components/Chatapp';
 import { useNavigate } from 'react-router-dom';
-
+import LoadingBar from 'react-top-loading-bar'
 const Home = () => {
     const navigate=useNavigate();
+    const [progress,setprogress]=useState(0)
     const [user, setUser] = useState(null);
   
     useEffect(() => {

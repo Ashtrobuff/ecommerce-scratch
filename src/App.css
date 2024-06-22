@@ -5,11 +5,7 @@ body{
   overflow-x: hidden;
   overflow-y: scroll;
 }
-#root{
-  position: absolute;
-  width: 100vw;
-
-  
+#root{ 
 }
 .navbar{
   display: flex;
@@ -109,11 +105,14 @@ color: grey;
  overflow-x: scroll;
  height: 350px;
 width: 100vw;
+overflow-y: hidden;
 scroll-behavior: smooth;}
 .product-carousel::-webkit-scrollbar{
   display: none;
 }
-
+.scrollhide::-webkit-scrollbar{
+  display: none;
+}
 .product{
   margin-top: 30px;
   height: fit-content;

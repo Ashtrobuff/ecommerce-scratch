@@ -8,7 +8,7 @@ import Product from '../components/Product';
 import data from '../data/data';
 import Category from '../components/Category';
 import { CgPhone, CgScreen } from 'react-icons/cg';
-
+import LoadingBar from 'react-top-loading-bar';
 import Footer from '../components/Footer';
 import Support from '../components/Support';
 import { FaGear, FaScreenpal } from 'react-icons/fa6';
@@ -20,23 +20,31 @@ import ProductCarousel from './ProductCarousel';
 import { useNavigate } from 'react-router-dom';
 const Landin = () => {
    const[response, setresponse]=useState([]);
+   const [progress,setprogress]=useState(0)
    const [data1,setdata1]=useState([])
    const navigate=useNavigate()
    const getData= async ()=>{
+    setprogress(10)
        const req=await fetch('https://dummyjson.com/products/category/smartphones')
       .then(res => res.json())
       .then(data=>setresponse(data.products))
-      
+      setprogress(80)
+      setprogress(100)
    }
+   
    const getData1= async ()=>{
     const req=await fetch('https://dummyjson.com/products/')
    .then(res => res.json())
    .then(data=>setdata1(data.products))
    
 }
+
     useEffect(()=>{
+  
          getData()
+        
          getData1()
+       
 },[])
 const lefter=useRef()
 const righter=useRef()
@@ -51,7 +59,10 @@ function scrollRight(){
 }
 const mapper=response.products
   return (
-    <div className=' absolute h-full w-full'>
+    <div className='h-full w-full'>
+      <LoadingBar  color='#f11946'
+        progress={progress}
+        onLoaderFinished={() => setprogress(0)}></LoadingBar>
      <Navbar className='absolute w-full h-full'/>
    <div id="lowerbox" className='lowerbox p-5 w-full'>
     <div className='categories'>
@@ -97,7 +108,7 @@ const mapper=response.products
     </div>
     </div>
     <div className='flex items-center justify-center cursor-pointer iconer'>
-      <div className='h-fit mt-5 rounded-sm p-5 w-fit text-white' style={{background:"#DB4444"}}>View All products</div>
+      <div className='h-fit mt-5 rounded-sm p-5 w-fit text-white' style={{background:"#DB4444"}} onClick={()=>navigate("/allproducts")}>View All products</div>
       </div>
 
       <div className='w-full mt-12 bg-white text-center mb-11 flex justify-center' style={{height:"10px"}}>

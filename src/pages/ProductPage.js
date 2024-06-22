@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { responsiveProperty } from '@mui/material/styles/cssUtils'
 import sup from '/Users/ashish/Desktop/ecommerce/src/components/sup.png'
 import { Rating } from '@mui/material'
@@ -11,18 +11,33 @@ import { truck } from './icons'
 import { cycle } from './icons'
 import ProductCarousel from './ProductCarousel'
 import LoadingBar from 'react-top-loading-bar'
-
+import { useDispatch,useSelector } from 'react-redux'
+import { addToCart } from '../features/Cart/CartSlice'
+import { ToastContainer } from 'react-toastify'
 const ProductPage = () => {
- 
+        const dispatch=useDispatch();
+        const navigate=useNavigate();
     const {id}=useParams()
+    const [progress,setprogress]=useState(0)
     const[response, setresponse]=useState({});
     const [image,setimage]=useState()
     const [image1,setimage1]=useState()
     const [mainimg,setmainimg]=useState()
-    const[loading,setloading]=useState(false)
+    
+    const[loading,setloading]=useState(true)
 const[rating ,setrating]=useState()
 const[similar,setsimilar]=useState([])
 const[cat,setcat]=useState()
+const[itemquantity,setitemquantity]=useState(1)
+const increment=()=>{
+const b=itemquantity+1;
+setitemquantity(b)
+}
+const decrement=()=>{
+    if(itemquantity>0){
+    const b=itemquantity-1;
+    setitemquantity(b)}
+    }
 useEffect(() => {
     window.scrollTo(0, 0);
 }, [id]);
@@ -39,23 +54,24 @@ useEffect(() => {
         setmainimg(data.images[0])
        })
        .catch(err=>console.log("this is the error:",err.message))
-   
+       setloading(false)
+       setprogress(20)
+       setprogress(80)
     }
     const getSimilar=()=>{
-        setloading(true)
+       
         const req= fetch(`https://dummyjson.com/products/category/${cat}`)
        .then(res => res.json())
        .then(data=>{console.log(data)
         setsimilar(data.products)
-        setloading(false)
+        setprogress(100)
        })
        .catch(err=>console.log("this is the error:",err.message))
-   
     }
 useEffect(()=>{
     getData()
     getSimilar()
-   
+
 },[id,cat])
 const changeImg = (img) => {
     setmainimg(img);
@@ -80,15 +96,24 @@ const changeImg = (img) => {
       function changeimg(i){
             setmainimg(i)
       }
+      const Gotocart=()=>
+      {
+        dispatch(addToCart({ id: response.id, title: response.title, price: response.price ,image:response.images[0],quantity:itemquantity}))
+        navigate('/cart')
+      }
     
   return (
     
-    <div className='absolute'>
+    <div className='w-full'>
     <Navbar/>
     { 
-      loading? ( response? (
+     response? (
+
         <div className='flex flex-row justify-evenly w-full' style={{width:"100vw"}}>
-            
+            <ToastContainer/>   
+            <LoadingBar  color='#f11946'
+        progress={progress}
+        onLoaderFinished={() => setprogress(0)}></LoadingBar>
             <div className='flex flex-col h-full justify-evenly gap-5 mt-10'>
     
                  {
@@ -108,7 +133,9 @@ const changeImg = (img) => {
             <div className='bg-white mt-10 px-5' style={{width:"500px"}}>
             <h1 className='text-3xl'>{response.title}</h1>
             <div>
-                <Rating value={Math.max(0, rating1)}precision={0.5}/>
+                <div className='flex flex-row gap-5'><Rating value={Math.max(0, rating1)}precision={0.5}/>
+                <h4 className= ' items-center justify-center flex  text-slate-400'>({rating1})</h4></div>
+                
                 <h3>{response.availabilityStatus}</h3>
                 <span>{response.description}</span>
                 <div className=' bg-slate-400 w-full mt-5' style={{height:"1px"}}></div>
@@ -136,17 +163,17 @@ const changeImg = (img) => {
                 </div>
                 <div className='flex flex-row rounded-lg mt-5 gap-5 '>
                     <div className='flex flex-row border-solid border-black rounded-lg'style={{borderWidth:"1px"}}>
-                        <div className='h-8 w-8 bg-white p-1 flex items-center justify-center font-bold rounded-l-lg'>
+                        <div className='h-8 w-8 bg-white p-1 flex items-center justify-center font-bold rounded-l-lg cursor-pointer' onClick={increment}>
         +
                     </div>
-                    <div className='h-8 w-20 bg-red-400 text-white font-bold p-1 flex items-center justify-center' style={{borderLeftWidth:"1px", borderRightWidth:"1px"}}>
-                        2
+                    <div className='h-8 w-20 bg-red-400 text-white font-bold p-1 flex items-center justify-center iconer' style={{borderLeftWidth:"1px", borderRightWidth:"1px"}}>
+                        {itemquantity}
                     </div>
-                    <div className='h-8 w-8 bg-white p-1 flex items-center justify-center font-bold rounded-r-lg    '>
+                    <div className='h-8 w-8 bg-white p-1 flex items-center justify-center font-bold rounded-r-lg cursor-pointer' onClick={decrement}>
                         -
                     </div></div>
                     
-                    <div className='bg-red-400 text-white w-40 flex items-center justify-center rounded-lg iconer cursor-pointer'>buy now</div>
+                    <div className='bg-red-400 text-white w-40 flex items-center justify-center rounded-lg iconer cursor-pointer font-bold' onClick={Gotocart}>buy now</div>
                     <div className='border-solid w-10 border-black flex items-center justify-center rounded-lg iconer cursor-pointer' style={{borderWidth:"1px"}}>
                         <CiHeart/>
                     </div>
@@ -173,8 +200,7 @@ const changeImg = (img) => {
                     </div>
             </div>
         </div>):(<>error</>)
-   ):(<></>)
-    }
+}
     <div className='mb-32'>
     <div className='p-10 text-2xl font-bold flex flex-row gap-2'>
         <div className='h-10 w-4 bg-red-600 rounded-md'></div>Related Items</div>

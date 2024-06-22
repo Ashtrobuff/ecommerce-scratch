@@ -29,10 +29,10 @@ useEffect(()=>{
   console.log(prods)
 },[id])
   return (
-    <div className='absolute w-full'>
-      <div>
+    <div className='w-full'>
+      
       <Navbar/>
-      </div>
+   
      <div  className=' p-10 font-bold mt-10'>
       <div>you are browsing through,{id}</div>
       <div className='categoryshow flex items-center justify-center'>
