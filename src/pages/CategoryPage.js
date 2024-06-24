@@ -30,10 +30,10 @@ useEffect(()=>{
 },[id])
   return (
     <div className='w-full'>
-      
+      <div>
       <Navbar/>
-   
-     <div  className=' p-10 font-bold mt-10'>
+      </div>
+    {prods.length!=0 ? ( <div  className=' p-10 font-bold mt-10'>
       <div>you are browsing through,{id}</div>
       <div className='categoryshow flex items-center justify-center'>
        
@@ -43,13 +43,11 @@ useEffect(()=>{
         </div>
       ))}
       </div>
-     </div>
+     </div>):(<div className='h-96 bg-white'></div>)
+     }
      <Footer/>
     </div>
   )
 }
 
 export default CategoryPage
-
-
-

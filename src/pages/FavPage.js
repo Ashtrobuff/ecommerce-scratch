@@ -1,23 +1,22 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart,removeFromCart,updateQuantity,clearCart } from '../features/Cart/CartSlice';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import { addToFav,removeFromFav,updateQuantity,clearFav } from '../features/favprods/FavSlice';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 import { FaDumpster, FaTrash } from 'react-icons/fa';
-import { cat } from '../pages/icons';
-const Cart = () => {
-    const cartItems = useSelector(state => state.cart.items);
-  const cartTotal = useSelector(state => state.cart.total);
+const FavPage = () => {
+    const cartItems = useSelector(state => state.fav.items);
+  const cartTotal = useSelector(state => state.fav.total);
   const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
 }, []);
   const handleAddToCart = (item) => {
-    dispatch(addToCart(item));
+    dispatch(addToFav(item));
   };
 
   const handleRemoveFromCart = (itemId) => {
-    dispatch(removeFromCart(itemId));
+    dispatch(removeFromFav(itemId));
   };
 
   const handleUpdateQuantity = (itemId, quantity) => {
@@ -25,7 +24,7 @@ const Cart = () => {
   };
 
   const handleClearCart = () => {
-    dispatch(clearCart());
+    dispatch(clearFav());
   };
 useEffect(()=>{
     console.log(cartItems)
@@ -53,7 +52,7 @@ useEffect(()=>{
        <div className='inline-block ml-20'>Total</div>
 
     </div>
-    {cartItems.length===0 ? (<div className='w-full p-5 flex flex-col  scrollhide items-center justify-center' style={{height:""}}>{cat}</div>):( <div className=' w-full p-5 bg-white flex flex-col gap-10 justify-evenly overflow-scroll h-full scrollhide'>
+    {cartItems.length===0 ? (<div className='w-full p-5 flex flex-col  scrollhide items-center justify-center' style={{height:"1000px"}}> No favorites yet :(</div>):( <div className=' w-full p-5 bg-white flex flex-col gap-10 justify-evenly overflow-scroll h-full scrollhide'>
     {cartItems.map(item => (
         <div key={item.id} className='p-5 w-full shadow-md bg-white flex flex-row gap-10 justify-around overflow-clip scrollhide'>
            
@@ -69,9 +68,9 @@ useEffect(()=>{
        <div className='inline-block '>
         <div className='flex items-center justify-center h-full'>
         <div className='flex flex-row'>
-        <div className='flex items-center justify-center w-5 p-2 bg-red-400 iconer rounded-lg cursor-pointer text-white font-bold' onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}>-</div>
+        <div className='flex items-center justify-center w-5 p-2 bg-red-400 iconer rounded-lg cursor-pointer text-white font-bold'>+</div>
         <div className='flex items-center justify-center p-2 w-12 bg-white bg-red-400 rounded-lg cursor-pointer'>{item.quantity}</div>
-        <div className='flex items-center justify-center w-5 p-2 bg-red-400 iconer rounded-lg cursor-pointer text-white font-bold' onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}>+</div>
+        <div className='flex items-center justify-center w-5 p-2 bg-red-400 iconer rounded-lg cursor-pointer text-white font-bold'>-</div>
         </div>
         </div>
        </div>
@@ -92,22 +91,19 @@ useEffect(()=>{
  
           
     {/* Display total */}
-  
-    <div className='flex flex-row justify-evenly w-full'>
-    <div className='h-20 font-bold text-3xl justify-end'>Total:${cartTotal}</div>
+
 
 {/* Clear cart button */}
 <div className='flex gap-10 flex-1 mb-20 p-5'>
-<div onClick={handleClearCart} className='h-5 flex items-center justify-center rounded-lg w-fit p-5 bg-red-400 cursor-pointer text-white font-bold shadow-2xl'>Clear Cart</div>
-<div onClick={handleClearCart} className='h-5 flex items-center justify-center rounded-lg w-48 p-5 bg-red-400 cursor-pointer text-white font-bold shadow-2xl'>Checkout</div>
+
 </div>
     </div>
     
    
     <Footer className='mt-10'/>
-  </div>
+  
   </>
   )
 }
 
-export default Cart
+export default FavPage

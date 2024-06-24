@@ -21,7 +21,7 @@ function scrollRight(){
           <div className='iconer cursor-pointer' onClick={scrollRight}> <FaArrowCircleRight style={{scale:"2"}}/></div>
           
          </div>
-     <div className='product-carousel h-48 overflow-y-clip' ref={diver}>
+     <div className='product-carousel' ref={diver}>
       <div className='px-10' style={{height:"120px",width:"full",flexDirection:"row",display:"flex"}} >
       { 
  data.map((i)=>(

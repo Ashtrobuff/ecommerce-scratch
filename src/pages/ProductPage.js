@@ -14,6 +14,7 @@ import LoadingBar from 'react-top-loading-bar'
 import { useDispatch,useSelector } from 'react-redux'
 import { addToCart } from '../features/Cart/CartSlice'
 import { ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 const ProductPage = () => {
         const dispatch=useDispatch();
         const navigate=useNavigate();
@@ -96,10 +97,22 @@ const changeImg = (img) => {
       function changeimg(i){
             setmainimg(i)
       }
+      const notify = () => toast.success("🛒 item added to cart!",{
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        style:{color:"grey",background:"#fff"},
+        progressStyle:{backgroundColor:"red"}
+        });
       const Gotocart=()=>
       {
         dispatch(addToCart({ id: response.id, title: response.title, price: response.price ,image:response.images[0],quantity:itemquantity}))
-        navigate('/cart')
+       notify()
       }
     
   return (
@@ -109,32 +122,33 @@ const changeImg = (img) => {
     { 
      response? (
 
-        <div className='flex flex-row justify-evenly w-full' style={{width:"100vw"}}>
-            <ToastContainer/>   
+        <div className=' flex flex-row justify-evenly w-full ' style={{width:"100vw"}}>
+            <ToastContainer/> 
             <LoadingBar  color='#f11946'
         progress={progress}
         onLoaderFinished={() => setprogress(0)}></LoadingBar>
-            <div className='flex flex-col h-full justify-evenly gap-5 mt-10'>
+            <div id="side-imgs" className='hidden sm:flex flex-col h-full justify-evenly gap-5 mt-10'>
     
                  {
                     image?(image1.map((i)=>(
                         <div className='h-40  w-40 bg-slate-100 flex items-center justify-center cursor-pointer iconer overflow-hidden' onClick={()=>changeimg(i)}>
                             <img src={i} className='h-40 w40'/>
                         </div>
-                    ))):(<div>error</div>)
+                    ))):(<div>Loading...</div>)
                 }
                
             </div>
-            <div className='bg-slate-100 mt-10 flex flex-col items-center justify-center text-left' style={{width:"600px"}}>
-                { 
-                <img src={mainimg} className='h-96 w-fit'/>
-    }
+            <div id="mainimg" className='bg-slate-100 mt-10 flex flex-col items-center justify-center text-left' style={{width:"600px"}}>
+                
+                <img  onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}
+      onMouseOut={(e) => (e.currentTarget.style = { transform: "scale(1)", overflow: "hidden" })} src={mainimg} className='h-96 w-fit'/>
+    
             </div>
-            <div className='bg-white mt-10 px-5' style={{width:"500px"}}>
+            <div id="description" className='bg-white mt-10 px-5' style={{width:"500px"}}>
             <h1 className='text-3xl'>{response.title}</h1>
             <div>
-                <div className='flex flex-row gap-5'><Rating value={Math.max(0, rating1)}precision={0.5}/>
-                <h4 className= ' items-center justify-center flex  text-slate-400'>({rating1})</h4></div>
+                <div className='flex flex-row gap-5'><Rating readOnly={true} value={Math.max(0, rating1)}precision={0.5}/>
+                <div className= 'inline-block items-center justify-center flex  text-slate-400'>({rating1})</div></div>
                 
                 <h3>{response.availabilityStatus}</h3>
                 <span>{response.description}</span>
@@ -173,7 +187,7 @@ const changeImg = (img) => {
                         -
                     </div></div>
                     
-                    <div className='bg-red-400 text-white w-40 flex items-center justify-center rounded-lg iconer cursor-pointer font-bold' onClick={Gotocart}>buy now</div>
+                    <div className='bg-red-400 text-white w-40 flex items-center justify-center rounded-lg iconer cursor-pointer font-bold -z-1' onClick={Gotocart}>buy now</div>
                     <div className='border-solid w-10 border-black flex items-center justify-center rounded-lg iconer cursor-pointer' style={{borderWidth:"1px"}}>
                         <CiHeart/>
                     </div>
@@ -199,7 +213,7 @@ const changeImg = (img) => {
                         </div>
                     </div>
             </div>
-        </div>):(<>error</>)
+        </div>):(<>Error</>)
 }
     <div className='mb-32'>
     <div className='p-10 text-2xl font-bold flex flex-row gap-2'>

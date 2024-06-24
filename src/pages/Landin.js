@@ -18,14 +18,18 @@ import Navbar from '../components/Navbar';
 import { TbShoe } from 'react-icons/tb';
 import ProductCarousel from './ProductCarousel';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from 'react-redux';
+import Countdown from 'react-countdown';
 const Landin = () => {
    const[response, setresponse]=useState([]);
    const [progress,setprogress]=useState(0)
    const [data1,setdata1]=useState([])
-   const navigate=useNavigate()
+   const navigate=useNavigate();
    const getData= async ()=>{
     setprogress(10)
-       const req=await fetch('https://dummyjson.com/products/category/smartphones')
+       const req=await fetch('https://dummyjson.com/products?sortBy=title&order=asc')
       .then(res => res.json())
       .then(data=>setresponse(data.products))
       setprogress(80)
@@ -59,17 +63,21 @@ function scrollRight(){
 }
 const mapper=response.products
   return (
-    <div className='h-full w-full'>
+    <div className=' overflow-clip flex flex-col h-full w-full'>
       <LoadingBar  color='#f11946'
         progress={progress}
         onLoaderFinished={() => setprogress(0)}></LoadingBar>
+        
      <Navbar className='absolute w-full h-full'/>
-   <div id="lowerbox" className='lowerbox p-5 w-full'>
-    <div className='categories'>
+   <div id="lowerbox" className='flex flex-col items-center justify-center w-full sm:flex-row sm:lowerbox sm:p-5 sm:w-full'>
+    <div className='absolute'>
+      <ToastContainer/>
+    </div>
+    <div className='categories justify-self-auto'>
       <div  id="side-section"className='lister cursor-pointer'>
          <div onClick={()=>navigate(`/browsecategory/skin-care`)}>Skin Care</div>
          <div onClick={()=>navigate(`/browsecategory/sunglasses`)}>Lifestyle</div>
-         <div onClick={()=>navigate(`/browsecategory/mobile-accesories`)}>Mobile Accessories</div>
+         <div onClick={()=>navigate(`/browsecategory/mobile-accessories`)}>Mobile Accessories</div>
          <div onClick={()=>navigate(`/browsecategory/motorcycle`)}>Ride</div>
          <div onClick={()=>navigate(`/browsecategory/mens-watches`)}>Watches</div>
          <div onClick={()=>navigate(`/browsecategory/groceries`)}>Grocery</div>
@@ -77,35 +85,23 @@ const mapper=response.products
          
       </div>
     </div>
-    <div className='banner'><div><img style={{width:"100%"}} src='https://thumbs.dreamstime.com/b/vector-banner-iphone-vinnytsia-ukraine-september-illustration-app-web-presentation-design-229970813.jpg'/></div></div>
+    <div className='banner w-full overflow-scroll w-40 p-10 bg-red-500'><div><img style={{width:"1200px"}} src='https://static.vecteezy.com/system/resources/previews/002/006/774/non_2x/paper-art-shopping-online-on-smartphone-and-new-buy-sale-promotion-backgroud-for-banner-market-ecommerce-free-vector.jpg'/></div></div>
    </div>
-   <div className='p-10'>
+   <div className='p-10 justify-center items-center self-center sm:self-start'>
 
     <h1 className='todayspecial'>Today's Special</h1>
     </div>
-    <div className='name-timer-nav'>
+    <div className='name-timer-nav' style={{width:"100vw"}}>
         <div className='px-10'>
             <h1>Flash Sale</h1>
         </div>
          <div id="timer">
-            Timer
+         <Countdown date={Date.now() + 10000000} />
          </div>
-         <div id="navbtn">
-          <div className='iconer cursor-pointer' onClick={scrollLeft}> <FaArrowCircleLeft style={{scale:"2"}}/></div>
-          <div className='iconer cursor-pointer' onClick={scrollRight}> <FaArrowCircleRight style={{scale:"2"}}/></div>
-          
-         </div>
+<div></div>
     </div>
-    <div>
-    <div className='product-carousel h-48' ref={diver}>
-      <div className='px-10' style={{height:"120px",width:"full",flexDirection:"row",display:"flex"}} >
-      { 
- response.map((i)=>(
-         <Product data={i}/>
-      ))
-    }
-    </div>
-    </div>
+    <div className='w-full'>
+    <ProductCarousel data={response}/>
     </div>
     <div className='flex items-center justify-center cursor-pointer iconer'>
       <div className='h-fit mt-5 rounded-sm p-5 w-fit text-white' style={{background:"#DB4444"}} onClick={()=>navigate("/allproducts")}>View All products</div>
@@ -125,6 +121,10 @@ const mapper=response.products
    <Category component={<CiMobile1 style={{scale:"4"}}/>} name={"smartphones"}/>
    <Category component={<CiLaptop style={{scale:"4"}}/>} name={"Laptops"}/>
    <Category component={<TbShoe style={{scale:"4"}}/>} name={"mens-shoes"}/>
+   <Category component={<TbShoe style={{scale:"4"}}/>} name={"beauty"}/>
+   <Category component={<TbShoe style={{scale:"4"}}/>} name={"fragrances"}/>
+   <Category component={<TbShoe style={{scale:"4"}}/>} name={"furniture"}/>
+   <Category component={<TbShoe style={{scale:"4"}}/>} name={"groc"}/>
     </div>
     </div>
     <div>

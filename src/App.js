@@ -13,10 +13,17 @@ import CategoryPage from './pages/CategoryPage';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
 import AllProductPage from './pages/AllProductPage';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useEffect} from 'react';
+import { useSelector } from 'react-redux';
+import { Contact } from 'lucide-react';
+import ContactPage from './pages/Contact';
+import FavPage from './pages/FavPage';
 function App() {
   return (
-    
-   
+    <>
+   <ToastContainer />
     <BrowserRouter>
     <Routes>
      <Route path='/landing' element={<Landin/>}/>
@@ -37,9 +44,12 @@ function App() {
 <Route path='/shop' element={<PrivateRoute><Shopee/></PrivateRoute>}/>
 <Route path='/products' element={<PrivateRoute><Products/></PrivateRoute>}/>
 <Route path='/cart' element={<Cart/>}/>
+<Route path='/contact' element={<ContactPage/>}/>
+<Route path='/favs' element={<FavPage/>}/>
     </Routes>
     </BrowserRouter>
   
+    </>
   );
 }
 

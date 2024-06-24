@@ -21,7 +21,7 @@ const AllProductPage = () => {
     console.log(prods)
   },[])
     return (
-      <div className='absolute w-full'>
+      <div className='w-full'>
         <div>
         <Navbar/>
         </div>
