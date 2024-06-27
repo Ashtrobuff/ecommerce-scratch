@@ -26,7 +26,7 @@ function App() {
    <ToastContainer />
     <BrowserRouter>
     <Routes>
-     <Route path='/landing' element={<Landin/>}/>
+     <Route exact path='/landing' element={<Landin/>}/>
 <Route path='/login' element={<Login/>} name='login'/>
 <Route path='/browsecategory/:id' element={<CategoryPage/>}/>
       <Route path="/Register" element={<Register/>}/>
@@ -34,9 +34,9 @@ function App() {
       
  exact path="/"
   element={
-    <PrivateRoute>
-      <Home/>
-    </PrivateRoute>
+    <Landin/>
+      
+    
   }
 />
 <Route path='/allproducts' element={<AllProductPage/>}/>

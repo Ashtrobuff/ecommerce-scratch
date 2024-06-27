@@ -39,7 +39,7 @@ const Navbar = () => {
     <nav className='naver text-center justify-evenly' id="naver">
       <ul id='lister'>
       <div style={{margin:" 0px 120px"}} className='cursor-pointer' onho>
-      <li ref={navtabs} onClick={()=>(navigate("/landing"))}>Home</li>
+      <li ref={navtabs} onClick={()=>(navigate("/"))}>Home</li>
    <li ref={navtabs} onClick={()=>{navigate("/contact")}}>Contact</li>
    <li ref={navtabs}>About</li>
    <li ref={navtabs}>Sign up</li>
