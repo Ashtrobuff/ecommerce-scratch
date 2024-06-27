@@ -73,7 +73,7 @@ const mapper=response.products
     <div className='absolute'>
       <ToastContainer/>
     </div>
-    <div className='categories justify-self-auto'>
+    <div className='categories justify-self-auto' id='categories'>
       <div  id="side-section"className='lister cursor-pointer'>
          <div onClick={()=>navigate(`/browsecategory/skin-care`)}>Skin Care</div>
          <div onClick={()=>navigate(`/browsecategory/sunglasses`)}>Lifestyle</div>
@@ -85,7 +85,7 @@ const mapper=response.products
          
       </div>
     </div>
-    <div className='banner w-full overflow-scroll w-40 p-10 bg-red-500'><div><img style={{width:"1200px"}} src='https://static.vecteezy.com/system/resources/previews/002/006/774/non_2x/paper-art-shopping-online-on-smartphone-and-new-buy-sale-promotion-backgroud-for-banner-market-ecommerce-free-vector.jpg'/></div></div>
+    <div id="banner" className='banner w-full overflow-scroll w-40 p-10 bg-red-500'><div><img id='bannerimg' src='https://static.vecteezy.com/system/resources/previews/002/006/774/non_2x/paper-art-shopping-online-on-smartphone-and-new-buy-sale-promotion-backgroud-for-banner-market-ecommerce-free-vector.jpg'/></div></div>
    </div>
    <div className='p-10 justify-center items-center self-center sm:self-start'>
 
@@ -120,8 +120,8 @@ const mapper=response.products
    <Category component={<CiShirt style={{scale:"4"}}/>} name={"mens-shirts"}/>
    <Category component={<CiMobile1 style={{scale:"4"}}/>} name={"smartphones"}/>
    <Category component={<CiLaptop style={{scale:"4"}}/>} name={"Laptops"}/>
-   <Category component={<TbShoe style={{scale:"4"}}/>} name={"mens-shoes"}/>
-   <Category component={<TbShoe style={{scale:"4"}}/>} name={"beauty"}/>
+   <Category component={<FaShoePrints style={{scale:"4"}}/>} name={"mens-shoes"}/>
+   <Category component={ <CiHeart style={{scale:"4"}}/>} name={"beauty"}/>
    <Category component={<TbShoe style={{scale:"4"}}/>} name={"fragrances"}/>
    <Category component={<TbShoe style={{scale:"4"}}/>} name={"furniture"}/>
    <Category component={<TbShoe style={{scale:"4"}}/>} name={"groc"}/>

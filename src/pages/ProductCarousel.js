@@ -22,7 +22,7 @@ function scrollRight(){
           
          </div>
      <div className='product-carousel' ref={diver}>
-      <div className='px-10' style={{height:"120px",width:"full",flexDirection:"row",display:"flex"}} >
+      <div className='pl-5' style={{height:"120px",width:"full",flexDirection:"row",display:"flex"}} >
       { 
  data.map((i)=>(
          <Product data={i}/>

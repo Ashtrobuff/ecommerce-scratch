@@ -29,13 +29,14 @@ useEffect(()=>{
   console.log(prods)
 },[id])
   return (
-    <div className='w-full'>
+    <div id="categorywala"  className='w-full p-2'>
       <div>
       <Navbar/>
       </div>
-    {prods.length!=0 ? ( <div  className=' p-10 font-bold mt-10'>
+    {prods.length!=0 ? ( 
+    <div id="outercateg"  className=' p-10 font-bold mt-10'>
       <div>you are browsing through,{id}</div>
-      <div className='categoryshow flex items-center justify-center'>
+      <div id="categ-grid"className='categoryshow flex items-center justify-center'>
        
       {prods.map((i)=>(
         <div className=' flex items-center justify-center'>

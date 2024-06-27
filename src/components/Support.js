@@ -4,7 +4,7 @@ import sup from './sup.png'
 import truck from './truck.png'
 const Support = () => {
   return (
-    <div className='h-80 w-full text-black py-10'>
+    <div id="support"className='h-80 w-full text-black py-10'>
         <div  className='flex flex-row  items-center justify-center' style={{gap:"300px"}}>
             <div className='flex flex-col items-center justify-center w-52 mt-5'>
                 <img src={check}/>

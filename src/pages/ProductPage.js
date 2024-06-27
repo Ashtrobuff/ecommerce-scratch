@@ -117,35 +117,37 @@ const changeImg = (img) => {
     
   return (
     
-    <div className='w-full'>
+    <div className='w-fit'id="prodwala">
     <Navbar/>
     { 
      response? (
 
-        <div className=' flex flex-row justify-evenly w-full ' style={{width:"100vw"}}>
+        <div id="prodmain"className=' flex flex-row justify-evenly w-full ' style={{width:"100vw"}}>
             <ToastContainer/> 
-            <LoadingBar  color='#f11946'
+            <LoadingBar  color='#f11946' height={5} shadow={true}
         progress={progress}
         onLoaderFinished={() => setprogress(0)}></LoadingBar>
-            <div id="side-imgs" className='hidden sm:flex flex-col h-full justify-evenly gap-5 mt-10'>
+            <div id="side-imgs" className='flex flex-col h-full justify-evenly gap-5 mt-10'>
     
                  {
                     image?(image1.map((i)=>(
-                        <div className='h-40  w-40 bg-slate-100 flex items-center justify-center cursor-pointer iconer overflow-hidden' onClick={()=>changeimg(i)}>
+                        <div id="sideimage" className='h-40  w-40 bg-slate-100 flex items-center justify-center cursor-pointer iconer overflow-hidden' onClick={()=>changeimg(i)}>
                             <img src={i} className='h-40 w40'/>
                         </div>
                     ))):(<div>Loading...</div>)
                 }
                
             </div>
-            <div id="mainimg" className='bg-slate-100 mt-10 flex flex-col items-center justify-center text-left' style={{width:"600px"}}>
+            <div id="mainimg" className='bg-slate-100 mt-10 flex flex-col items-center justify-center' style={{width:"600px"}}>
                 
-                <img  onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}
-      onMouseOut={(e) => (e.currentTarget.style = { transform: "scale(1)", overflow: "hidden" })} src={mainimg} className='h-96 w-fit'/>
+                <img id="mainimgimg" onMouseOver={(e) => (e.currentTarget.style = { transform: "scale(1.25)", overflow: "hidden" })}
+      onMouseOut={(e) => (e.currentTarget.style = { transform: "scale(1)", overflow: "hidden" })} src={mainimg} className='h-96 w-auto'/>
     
             </div>
-            <div id="description" className='bg-white mt-10 px-5' style={{width:"500px"}}>
-            <h1 className='text-3xl'>{response.title}</h1>
+            <div id="description">
+                <div id="titlediv">
+                <h1 className='text-3xl'>{response.title}</h1>
+                </div>
             <div>
                 <div className='flex flex-row gap-5'><Rating readOnly={true} value={Math.max(0, rating1)}precision={0.5}/>
                 <div className= 'inline-block items-center justify-center flex  text-slate-400'>({rating1})</div></div>
@@ -218,7 +220,7 @@ const changeImg = (img) => {
     <div className='mb-32'>
     <div className='p-10 text-2xl font-bold flex flex-row gap-2'>
         <div className='h-10 w-4 bg-red-600 rounded-md'></div>Related Items</div>
-        <ProductCarousel data={similar}/>
+<ProductCarousel data={similar}/>
     </div>
    
     <Footer/>

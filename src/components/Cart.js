@@ -46,7 +46,7 @@ useEffect(()=>{
       ))}
     </ul>
     */}
-    <div className='p-5 w-full shadow-md bg-white flex flex-row gap-10 justify-evenly'>
+    <div className='p-5 w-full shadow-sm bg-white flex flex-row gap-10 justify-evenly'>
        <div className='inline-block ml-20 '>Product</div>
        <div className='inline-block ml-20'>Price</div>
        <div className='inline-block ml-20'>Quantity</div>
@@ -59,7 +59,7 @@ useEffect(()=>{
            
            <div className='inline-block'>
             <div className='flex flex-row items-center justify-center'>
-            <img className='h-20 w-fit' src={item.image}/>
+            <img className='h-20 w-auto' src={item.image}/>
         <div className='w-20 overflow-clip'>{item.title}</div>
             </div>
            </div>

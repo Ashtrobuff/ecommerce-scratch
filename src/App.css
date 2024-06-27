@@ -1,16 +1,209 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 body{
-  
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-x: clip;
+  overflow-x: hidden;
   overflow-y: scroll;
+  width: 100vw;
 }
-#root{ 
+@media (max-width: 450px) {
+  
+
+ #titlediv{
+  font-size: 12px;
+
+ }
+ #description{
+  margin-left: 20px;
+  padding: 50px;
+ }
+ #prodwala{
+  padding: 5px;
+ }
+ #footer{
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  display: none;
+ }
+ #side-imgs{
+  display: flex;
+  flex-direction: row;
+
+}
+#burger{
+  scale: 2;
+  color:white;
+  display: block;
+  position:absolute;  
+}
+}
+@media screen and (max-width:360px){
+  #outercateg{
+    display: flex;
+    flex-direction: column;
+  }
+  .categoryshow{
+    display: flex;
+    flex-direction: columns;
+    max-width: 100%;
+  }
+}
+@media screen and (max-width:640px){
+
+  body{
+    overflow-x: hidden;
+  }
+  .navbar{
+    display: none;
+  }
+#categories{
+  width: 100%;
+  max-width: 100%;
+}
+#banner{
+
+}
+  #mainimg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+  #input-thing{
+    display: none;
+  }
+  #mainimgimg{
+    width: auto;
+  }
+  #side-imgs{
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+  }
+  #sideimage{
+    width: 50px;
+    height: 50px;
+  }
+  #sideimage img{
+    width: fit-content;
+    height: 50px;
+  }
+  #side-imgs::-webkit-scrollbar{
+    display: none;
+  }
+  #prodmain{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: fit-content;
+    
+  }
+  #description{
+  width: 100%;
+  max-width: 100%;
+background:#fff;
+margin-top: 40px;
+padding-left: 20px;
+padding-right:20px;
+  }
+#categ-grid{
+  padding: 2px;
+  grid-template-columns: repeat(2,1fr);
+}
+.topper{
+  display: none;
+}
+#outercateg{
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 30px;
+}
+#search{
+  display:none;
+}
+#headerbhai{
+  padding: 0px;
+  height: 100px;
+}
+#topper h1{
+ font-size: 30px;
+}
+#titlediv{
+ display: inline-flex;
+ word-wrap: break-word;
+ white-space: normal;
+ font-size: small
+}
+  #prodwala{
+    display: flex;
+    flex-direction: column;
+justify-content: center;
+align-items: center;
+overflow-x: hidden;
+    
+  }
+  
+  #support{
+    display: none;
+  }
+  .naver{
+    display:none;
+  }
+  #naver{
+   
+  }
+  #banner{
+    display: none;
+  }
+
+  #input-thing{
+    display: none;
+  }
+  #lister{
+    display: none;
+  }
+}
+#burger{
+  scale: 2;
+  color:white;
+  display: none;
+}
+#cart{
+  scale:200%;
+  color: grey;
+  margin-left: 30px;
+}
+#heart{
+  scale:200%;
+  color: grey;
+  margin-left: 30px;
+}
+#titlediv{
+  display: inline-block;
+}
+#description{
+  width: 500px;
+  overflow: auto;
+}
+#footer{
+display: none;
+}
+#bannerimg{
+  width: 1200px;
+}
+#input-thing{
+  display: inline-block;
+  margin-left: 120px;
 }
 .navbar{
+
   display: flex;
   align-items: center;
   padding:5px;
@@ -19,7 +212,7 @@ body{
   border-color: #c72e2e;
   border: solid #dad7d7;
   border-width: 0 0 1px 0 ;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 .naver{
   flex:1;
@@ -27,6 +220,11 @@ body{
   list-style: none;
   display: inline-block;
   margin-right: 50px;
+  width:100vw;
+  overflow: hidden;
+}
+#lister{
+  flex-wrap: wrap;
 }
 .naver li{
   margin-left:30px
@@ -48,12 +246,24 @@ nav ul li{
   display: inline-block;
   padding-left: 10px;
 }
+#searchwala:focus{
+  border: none;
+  border-width: 0px;
+  border-bottom: 2px solid #db4444;
+}
+
+#searchwala{
+  border: none;
+  outline: none;
+  transition-duration: 0.34s;
+}
 .lowerbox{
   display: flex;
   flex-direction:row;
    width: 100vw;
    overflow: hidden;
    height: 300px;
+  
 }
 .categories{
 padding: 60px;
@@ -143,11 +353,7 @@ scroll-behavior: smooth;}
   scale: 1.2;
 }
 .lister{
-  display: flex;
-  flex-direction: column;
- justify-content: center;
- align-items: center;
- padding: 10px;
+ 
 }
 .lister div{
 padding:10px;

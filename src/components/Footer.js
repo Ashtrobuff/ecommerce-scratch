@@ -6,7 +6,7 @@ import { CiHeart, CiPaperplane } from "react-icons/ci";
 import { FaArrowCircleLeft,FaArrowCircleRight, FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 const Footer = () => {
   return (
-    <footer className='px-10 bg-black text-white flex flex-row gap-20 justify-evenly py-10 cursor-pointer'>
+    <footer id='footer' className='px-10 bg-black text-white flex flex-row gap-20 justify-evenly py-10 cursor-pointer'>
     <div className='flex flex-col gap-5'>
        <h2>Exclusive</h2>
        <h3>Subscribe</h3>

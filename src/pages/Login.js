@@ -53,7 +53,7 @@ const Login = () => {
 
   return (
     <>
-    <div className='loginbody w-full h-full'>
+    <div className=' w-full h-full'>
       <div className='form-container'>
      <div className='form-btn'>
       <span id='login' onClick={logintoggle} style={{cursor:"pointer"}} >Login</span>

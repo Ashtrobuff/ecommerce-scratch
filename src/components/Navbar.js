@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { IoMdCart } from "react-icons/io";
-import { CiHeart } from 'react-icons/ci';
+import { CiHeart, CiMenuBurger } from 'react-icons/ci';
 import { useNavigate } from 'react-router-dom';
 import Footer from './Footer';
 import { useSelector } from 'react-redux';
@@ -33,10 +33,11 @@ const Navbar = () => {
 
 
   return (
-    <div className='navbar w-full' id="topper">
-    <h1 className='cursor-pointer headerbhai' onClick={()=>{navigate("/landing")}}>Zipcart</h1>
-    <nav className='naver text-center justify-evenly'>
-      <ul>
+    <div className='navbar w-screen' id="topper">
+       <div id="menuicon"><CiMenuBurger id="burger"/></div>
+    <h1 className='cursor-pointer headerbhai' id="headerbhai" onClick={()=>{navigate("/landing")}}>Zipcart</h1>
+    <nav className='naver text-center justify-evenly' id="naver">
+      <ul id='lister'>
       <div style={{margin:" 0px 120px"}} className='cursor-pointer' onho>
       <li ref={navtabs} onClick={()=>(navigate("/landing"))}>Home</li>
    <li ref={navtabs} onClick={()=>{navigate("/contact")}}>Contact</li>
@@ -45,10 +46,10 @@ const Navbar = () => {
       </div>
    
    </ul>
-   <div style={{display:"inline-block", marginLeft:"120px"}}>
-    <div className='inline-flex'>
+   <div  id="input-thing">
+    <div id="search"className='inline-flex'>
       <div className='flex flex-col overflow-scroll'>
-      <input type='text' value={query} className='border-none bg-slate-100 rounded-sm' onChange={(e)=>setquery(e.target.value)}></input>
+      <input id="searchwala" type='text' value={query} className='border-none bg-slate-100 rounded-sm' onChange={(e)=>setquery(e.target.value)}></input>
       {
         query==="" ? <></> : <div className= 'absolute mt-10 h-42 overflow-scroll' >
         <div className='overflow-y-scroll z-40'>
@@ -60,9 +61,9 @@ const Navbar = () => {
     
     </div>
    <Badge color="secondary" badgeContent={quant} className='cursor-pointer iconer'>
-   <IoMdCart  style={{scale:"2", color:"grey",marginLeft:"30px"}} onClick={()=>(navigate("/cart"))}/>{" "}
+   <IoMdCart id="cart" onClick={()=>(navigate("/cart"))}/>{" "}
                 </Badge>
-   <CiHeart  className='iconer' style={{scale:"2", color:"grey",marginLeft:"30px",cursor:"pointer"}} onClick={()=>{navigate("/favs")}}/>
+   <CiHeart id='heart' className='iconer'  onClick={()=>{navigate("/favs")}}/>
    </div>
    </nav>
    
