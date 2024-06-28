@@ -1,70 +1,16 @@
-# Getting Started with Create React App
+## 🛒Zip cart- A one stop shopong platform for all your needs
+### connecting proprietors and consumers ❤️
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+#### zip cart is written in react and uses express and mongoDB for database and other backend tasks.
 
-In the project directory, you can run:
 
-### `npm start`
+![Screenshot 2024-06-28 at 9 25 34 AM](https://github.com/Ashtrobuff/ecommerce-scratch/assets/93227004/bd740919-5a28-443c-beef-2e1a55b35bf1)
+![Screenshot 2024-06-28 at 9 25 53 AM](https://github.com/Ashtrobuff/ecommerce-scratch/assets/93227004/5d39f45e-797a-41fb-bc0b-261a4a094d31)
+![Screenshot 2024-06-28 at 9 26 20 AM](https://github.com/Ashtrobuff/ecommerce-scratch/assets/93227004/24e73562-066d-45b5-b737-9a46b4f3986a)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## tech used⚙️
+![Screenshot 2024-06-28 at 9 29 46 AM](https://github.com/Ashtrobuff/ecommerce-scratch/assets/93227004/2bf44c48-bd90-46e7-a89c-e0a86fddf178)
+![Screenshot 2024-06-28 at 9 30 39 AM](https://github.com/Ashtrobuff/ecommerce-scratch/assets/93227004/f74c2d25-ddc4-4c65-9075-6c6127504005)
+![Screenshot 2024-06-28 at 9 31 07 AM](https://github.com/Ashtrobuff/ecommerce-scratch/assets/93227004/598c3c19-a84d-490a-a397-651a09274daf)
+![Screenshot 2024-06-28 at 9 31 31 AM](https://github.com/Ashtrobuff/ecommerce-scratch/assets/93227004/aec08dd0-36e8-4da5-a96e-a9f2afe329a2)
