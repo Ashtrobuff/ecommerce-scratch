@@ -1,4 +1,4 @@
-## 🛒Zip cart- A one stop shopong platform for all your needs
+# 🛒Zip cart- A one stop shoppinng platform for all your needs
 ### connecting proprietors and consumers ❤️
 
 
